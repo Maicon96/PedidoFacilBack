@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "id_empresa")
 	@JsonInclude(value = Include.NON_NULL)
-	private String idEmpresa;
+	private Long idEmpresa;
 	
 	@NotNull
 	@Column(name = "nome")
@@ -132,11 +132,11 @@ public class Usuario implements Serializable {
 		this.avatar = avatar;
 	}
 	
-	public String getIdEmpresa() {
+	public Long getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(String idEmpresa) {
+	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 

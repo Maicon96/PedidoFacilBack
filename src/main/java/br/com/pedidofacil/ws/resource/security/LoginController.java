@@ -111,27 +111,23 @@ public class LoginController extends ResponseEntityExceptionHandler {
 			
 			if (idEndereco > 0) {
 				request.registro.setIdEndereco(idEndereco);
+			} 
 				
-				List<CampoErroDTO> erros = this.usuarioService.salvar(request.registro);			
+			List<CampoErroDTO> erros = this.usuarioService.salvar(request.registro);			
+			
+			if (erros.isEmpty()) {		
+				response.registro = request.registro;
+				response.msg = "Sucesso ao cadastrar Usuário!";
+				LOG.info("Save - Sucesso ao cadastrar Usuário!");
 				
-				if (erros.isEmpty()) {		
-					response.registro = request.registro;
-					response.msg = "Sucesso ao cadastrar Usuário!";
-					LOG.info("Save - Sucesso ao cadastrar Usuário!");
-					
-					//this.geraToken(request.registro);
-					
-				} else {
-					response.success = false;				
-					response.msg = "Erro ao cadastrar Usuário!";				
-					response.errors.addAll(erros);
-					LOG.info("Save - Erro ao cadastrar Usuário!");
-				}	
+				//this.geraToken(request.registro);
+				
 			} else {
 				response.success = false;				
-				response.msg = "Erro ao cadastrar Usuário Endereço!";	
-				LOG.info("Save - Erro ao cadastrar Usuário Endereço!");
-			}
+				response.msg = "Erro ao cadastrar Usuário!";				
+				response.errors.addAll(erros);
+				LOG.info("Save - Erro ao cadastrar Usuário!");
+			}				
 					
 		} catch (Exception e) {
 			response.success = false;
