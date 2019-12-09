@@ -139,6 +139,7 @@ public class LoginController extends ResponseEntityExceptionHandler {
 				: new ResponseEntity<Object>(response, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
+	
 	public String geraToken(Usuario usuario) throws ServletException {		
 		
 		String token = "";

@@ -14,7 +14,7 @@ public class WsApplication {
 	public FilterRegistrationBean filtroJWT() {
 		FilterRegistrationBean frb =  new FilterRegistrationBean();
 		frb.setFilter(new TokenFilterSecurity());
-		frb.addUrlPatterns("/service/*");//se tiver essa linha na rota, vai fazer o interceptor
+		frb.addUrlPatterns("/security/*");//se tiver essa linha na rota, vai fazer o interceptor
 		
 		return frb;
 	}
